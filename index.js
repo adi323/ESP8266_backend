@@ -4,10 +4,12 @@ const mongoose=require('mongoose')
 const cors=require('cors');
 const http=require('http');
 
+const env=require('dotenv');
+env.config();
 app.use(cors());
-
+//console.log(`${process.env.USERID}:${process.env.PASSWORD}`);
 var conn=mongoose.connect(
-    'mongodb+srv://Adi12245:Phoenix_12245@cluster0.hdxqe.mongodb.net/?retryWrites=true&w=majority',
+    `mongodb+srv://${process.env.USERID}:${process.env.PASSWORD}@cluster0.hdxqe.mongodb.net/?retryWrites=true&w=majority`,
     {
         useNewUrlParser:true,
         useUnifiedTopology:true
@@ -98,6 +100,6 @@ io.on('connection',(socket)=>{
 
 
 
-https.listen(3000,()=>{
-    console.log(`Server is running at 3000`);
+https.listen(process.env.PORT|3000,()=>{
+    console.log(`Server is running at ${process.env.PORT}`);
 });
