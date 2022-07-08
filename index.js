@@ -100,6 +100,6 @@ io.on('connection',(socket)=>{
 
 
 
-https.listen(process.env.PORT|3000,()=>{
+https.listen(process.env.PORT,()=>{
     console.log(`Server is running at ${process.env.PORT}`);
 });
