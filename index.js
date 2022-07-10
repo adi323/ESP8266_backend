@@ -18,9 +18,11 @@ var conn=mongoose.connect(
     console.log("Database Connected");
 })
 app.use(express.json());
+
 app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/index.html');
- });
+});
+
 app.post('/addButton',(req,res)=>{
     
     switches.findOne({switchid:req.body.id},(err,prof)=>{
