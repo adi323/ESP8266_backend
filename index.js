@@ -19,10 +19,8 @@ var conn=mongoose.connect(
 })
 app.use(express.json());
 app.get('/',(req,res)=>{
-    res.status(200).json({
-        "msg":"hello"
-    });
-})
+    res.sendFile(__dirname+'/index.html');
+ });
 app.post('/addButton',(req,res)=>{
     
     switches.findOne({switchid:req.body.id},(err,prof)=>{
